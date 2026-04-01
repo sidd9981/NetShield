@@ -177,9 +177,9 @@ def add_ratio_features(df: pd.DataFrame) -> pd.DataFrame:
 #  Main pipeline 
 
 def run_multiday_pipeline():
-    log.info("=" * 60)
+    log.info("\n")
     log.info("NetShield -- Multi-Day Preprocessing v4")
-    log.info("=" * 60)
+    log.info("\n")
 
     PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
     SPLITS_DIR.mkdir(parents=True, exist_ok=True)
@@ -361,9 +361,9 @@ def run_multiday_pipeline():
 
     #  Summary 
     log.info("")
-    log.info("=" * 60)
+    log.info("\n")
     log.info("DONE")
-    log.info("=" * 60)
+    log.info("\n")
     log.info("  Features:    %d", len(feature_cols))
     log.info("  Scaler:      QuantileTransformer (normal, benign-only)")
     log.info("  Train days:  %d", len(train_files))

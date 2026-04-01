@@ -1,9 +1,7 @@
 """
-NetShield — Step 2: Exploratory Data Analysis
+NetShield —  Exploratory Data Analysis
 Run from the netshield/ project root:
     python -m src.data.eda
-
-Or copy into a Jupyter notebook for interactive exploration.
 """
 
 import pandas as pd
@@ -12,7 +10,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from pathlib import Path
 
-# ─── Configuration ───
+# Configuration 
 RAW_DATA_DIR = Path("data/raw")
 CSV_FILE = RAW_DATA_DIR / "Wednesday-14-02-2018_TrafficForML_CICFlowMeter.csv"
 
@@ -75,7 +73,7 @@ def analyze_missing_values(df: pd.DataFrame) -> pd.DataFrame:
     nan_cols = nan_counts[nan_counts > 0]
 
     if len(nan_cols) > 0:
-        print(f"\n⚠️  {len(nan_cols)} columns have NaN values:")
+        print(f"\n  {len(nan_cols)} columns have NaN values:")
         for col, count in nan_cols.items():
             pct = count / len(df) * 100
             print(f"   {col}: {count:,} ({pct:.2f}%)")
@@ -165,9 +163,9 @@ def analyze_class_distribution(df: pd.DataFrame) -> None:
 
 def analyze_feature_distributions(df: pd.DataFrame) -> None:
     """Analyze distributions of numeric features."""
-    print("\n" + "=" * 60)
+    print("\n")
     print("FEATURE DISTRIBUTIONS")
-    print("=" * 60)
+    print("\n")
 
     numeric_df = df.select_dtypes(include=[np.number])
     print(f"\nNumeric features: {numeric_df.shape[1]}")
@@ -186,7 +184,7 @@ def analyze_feature_distributions(df: pd.DataFrame) -> None:
     # Features with zero variance (useless)
     zero_var = stats[stats["std"] == 0]
     if len(zero_var) > 0:
-        print(f"\n⚠️  Zero-variance features (should drop): {zero_var.index.tolist()}")
+        print(f"\n  Zero-variance features (should drop): {zero_var.index.tolist()}")
     else:
         print("\n No zero-variance features")
 

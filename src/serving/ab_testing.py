@@ -238,9 +238,9 @@ def run_simulation():
     Uses the same model as both champion and challenger (with a slightly
     different threshold for the challenger) to demonstrate the framework.
     """
-    log.info("=" * 60)
+    log.info("\n")
     log.info("A/B Test Simulation")
-    log.info("=" * 60)
+    log.info("\n")
 
     cfg = ABConfig()
     manager = ABTestManager(cfg)
@@ -309,9 +309,9 @@ def run_simulation():
 
     # Final results
     log.info("")
-    log.info("=" * 60)
+    log.info("\n")
     log.info("FINAL RESULTS")
-    log.info("=" * 60)
+    log.info("\n")
 
     champ_metrics = manager.compute_metrics(manager.champion)
     chall_metrics = manager.compute_metrics(manager.challenger)
@@ -357,9 +357,9 @@ def run_analyze():
     with open(results_path) as f:
         results = json.load(f)
 
-    log.info("=" * 60)
+    log.info("\n")
     log.info("A/B Test Analysis")
-    log.info("=" * 60)
+    log.info("\n")
 
     champ = results["champion"]
     chall = results["challenger"]

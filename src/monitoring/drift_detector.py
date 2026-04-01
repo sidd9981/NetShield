@@ -1,9 +1,8 @@
 """
 NetShield -- Data Drift Detection
-====================================
+
 Monitors whether incoming network traffic patterns are shifting
-away from the training data distribution using Kolmogorov-Smirnov
-tests on each feature.
+away from the training data distribution.
 
 How it works:
   - Reference: benign training data (what the model learned)
@@ -222,9 +221,9 @@ def run_monitor(interval: int = 30, n_batches: int = 10):
 
     # Summary
     log.info("")
-    log.info("=" * 60)
+    log.info("\n")
     log.info("MONITORING SUMMARY")
-    log.info("=" * 60)
+    log.info("\n")
     n_alerts = sum(1 for h in history if h["needs_retraining"])
     log.info("  Checks:     %d", len(history))
     log.info("  Alerts:     %d", n_alerts)

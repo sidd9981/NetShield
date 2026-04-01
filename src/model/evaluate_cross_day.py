@@ -140,9 +140,9 @@ def evaluate_model(X, y, labels_original, threshold):
     predictions = (scores > threshold).astype(int)
 
     # Overall metrics
-    log.info("=" * 60)
+    log.info("\n")
     log.info("OVERALL METRICS (threshold=%.6f)", threshold)
-    log.info("=" * 60)
+    log.info("\n")
 
     auc = roc_auc_score(y, scores)
     log.info("AUC-ROC:   %.4f", auc)
@@ -157,9 +157,9 @@ def evaluate_model(X, y, labels_original, threshold):
 
     # Per-attack-type breakdown
     log.info("")
-    log.info("=" * 60)
+    log.info("\n")
     log.info("PER ATTACK TYPE BREAKDOWN")
-    log.info("=" * 60)
+    log.info("\n")
 
     unique_labels = np.unique(labels_original)
     log.info("")
@@ -181,9 +181,8 @@ def evaluate_model(X, y, labels_original, threshold):
 
     # Score distribution comparison
     log.info("")
-    log.info("=" * 60)
     log.info("SCORE DISTRIBUTIONS")
-    log.info("=" * 60)
+    log.info("\n")
 
     benign_scores = scores[y == 0]
     attack_scores = scores[y == 1]

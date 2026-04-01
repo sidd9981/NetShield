@@ -6,11 +6,8 @@ retrieval during streaming inference. Replaces per-request
 preprocessing with a single Redis GET.
 
 Architecture:
-    [Preprocessing Pipeline] -> Redis (hash per flow_id)
-                                  |
-                            GET flow_id
-                                  |
-                         Inference Engine (<10ms)
+    [Preprocessing Pipeline] -> Redis (hash per flow_id) -> GET flow_id -> Inference Engine (<10ms)
+
 
 Each flow is stored as a Redis hash:
     flow:{flow_id} -> { feature_name: scaled_value, ... }

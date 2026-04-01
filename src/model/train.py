@@ -1,6 +1,6 @@
 """
 NetShield -- Training Script with MLflow
-==========================================
+
 Trains the Transformer autoencoder and logs everything to MLflow:
   - Hyperparameters
   - Per-epoch metrics
@@ -177,7 +177,7 @@ def run_training():
     cfg.n_features = meta["n_features"]
     log.info("Features: %d, Device: %s", cfg.n_features, cfg.device)
 
-    # ── MLflow setup ─────────────────────────────────────────────────────────
+    #  MLflow setup 
     mlflow.set_experiment("netshield-intrusion-detection")
 
     with mlflow.start_run(run_name=f"transformer-ae-{time.strftime('%Y%m%d-%H%M%S')}"):
@@ -203,7 +203,7 @@ def run_training():
             "scoring": "blended_70mean_30max",
         })
 
-        # ── Load data ────────────────────────────────────────────────────────
+        #  Load data 
         log.info("Loading data...")
         train_split, val_split, test_split = load_splits()
 
@@ -217,7 +217,7 @@ def run_training():
         log.info("Train batches: %d (benign only, %d samples)", len(train_loader), n_benign)
         mlflow.log_param("n_train_benign", n_benign)
 
-        # ── Model ────────────────────────────────────────────────────────────
+        #  Model 
         model = TransformerAutoencoder(
             n_features=cfg.n_features,
             d_model=cfg.d_model,
@@ -245,7 +245,7 @@ def run_training():
         best_val_auc = 0.0
         patience_counter = 0
 
-        # ── Training loop ────────────────────────────────────────────────────
+        #  Training loop 
         for epoch in range(1, cfg.epochs + 1):
             t0 = time.time()
 
@@ -293,7 +293,7 @@ def run_training():
                     mlflow.log_metric("stopped_at_epoch", epoch)
                     break
 
-        # ── Load best and evaluate ───────────────────────────────────────────
+        #  Load best and evaluate 
         model.load_state_dict(
             torch.load(ARTIFACTS_DIR / "best_model.pt", weights_only=True)
         )
@@ -355,7 +355,7 @@ def run_training():
 
         mlflow.log_metrics(attack_recalls)
 
-        # ── Log artifacts to MLflow ──────────────────────────────────────────
+        #  Log artifacts to MLflow 
         with open(ARTIFACTS_DIR / "threshold.json", "w") as f:
             json.dump({
                 "threshold": threshold,
