@@ -1,0 +1,230 @@
+{
+  "ACK Flag Cnt": {
+    "lower": 0.0,
+    "upper": 1.0
+  },
+  "Active Max": {
+    "lower": 0.0,
+    "upper": 5813453.009999835
+  },
+  "Active Mean": {
+    "lower": 0.0,
+    "upper": 4000509.9699999997
+  },
+  "Active Min": {
+    "lower": 0.0,
+    "upper": 4000264.0
+  },
+  "Active Std": {
+    "lower": 0.0,
+    "upper": 1593231.863890236
+  },
+  "Bwd IAT Max": {
+    "lower": 0.0,
+    "upper": 59007542.0
+  },
+  "Bwd IAT Mean": {
+    "lower": 0.0,
+    "upper": 11741311.478999993
+  },
+  "Bwd IAT Min": {
+    "lower": 0.0,
+    "upper": 10000000.0
+  },
+  "Bwd IAT Std": {
+    "lower": 0.0,
+    "upper": 22660911.002676092
+  },
+  "Bwd IAT Tot": {
+    "lower": 0.0,
+    "upper": 118148586.33999999
+  },
+  "Bwd Pkt Len Max": {
+    "lower": 0.0,
+    "upper": 1460.0
+  },
+  "Bwd Pkt Len Mean": {
+    "lower": 0.0,
+    "upper": 1123.1076949486774
+  },
+  "Bwd Pkt Len Min": {
+    "lower": 0.0,
+    "upper": 224.0
+  },
+  "Bwd Pkt Len Std": {
+    "lower": 0.0,
+    "upper": 703.5968503183
+  },
+  "Down/Up Ratio": {
+    "lower": 0.0,
+    "upper": 2.0
+  },
+  "FIN Flag Cnt": {
+    "lower": 0.0,
+    "upper": 0.0
+  },
+  "Flow Duration": {
+    "lower": 0.0,
+    "upper": 118712022.43999998
+  },
+  "Flow IAT Max": {
+    "lower": 0.0,
+    "upper": 88020409.94
+  },
+  "Flow IAT Mean": {
+    "lower": 0.0,
+    "upper": 86549717.52
+  },
+  "Flow IAT Min": {
+    "lower": 0.0,
+    "upper": 86549717.52
+  },
+  "Flow IAT Std": {
+    "lower": 0.0,
+    "upper": 22186019.254524786
+  },
+  "Fwd Act Data Pkts": {
+    "lower": 0.0,
+    "upper": 17.0
+  },
+  "Fwd PSH Flags": {
+    "lower": 0.0,
+    "upper": 1.0
+  },
+  "Fwd Pkt Len Max": {
+    "lower": 0.0,
+    "upper": 1129.0
+  },
+  "Fwd Pkt Len Mean": {
+    "lower": 0.0,
+    "upper": 248.3
+  },
+  "Fwd Pkt Len Min": {
+    "lower": 0.0,
+    "upper": 77.0
+  },
+  "Fwd Pkt Len Std": {
+    "lower": 0.0,
+    "upper": 418.1447118
+  },
+  "Fwd Seg Size Min": {
+    "lower": 0.0,
+    "upper": 40.0
+  },
+  "Idle Max": {
+    "lower": 0.0,
+    "upper": 87891197.55999999
+  },
+  "Idle Mean": {
+    "lower": 0.0,
+    "upper": 87887065.40999998
+  },
+  "Idle Min": {
+    "lower": 0.0,
+    "upper": 87887065.40999998
+  },
+  "Idle Std": {
+    "lower": 0.0,
+    "upper": 9004109.02609027
+  },
+  "Init Bwd Win Byts": {
+    "lower": -1.0,
+    "upper": 63958.0
+  },
+  "Init Fwd Win Byts": {
+    "lower": -1.0,
+    "upper": 65535.0
+  },
+  "PSH Flag Cnt": {
+    "lower": 0.0,
+    "upper": 1.0
+  },
+  "Pkt Len Max": {
+    "lower": 0.0,
+    "upper": 1460.0
+  },
+  "Pkt Len Mean": {
+    "lower": 0.0,
+    "upper": 741.8262914454558
+  },
+  "Pkt Len Min": {
+    "lower": 0.0,
+    "upper": 77.0
+  },
+  "Pkt Len Std": {
+    "lower": 0.0,
+    "upper": 689.6374216979489
+  },
+  "Pkt Len Var": {
+    "lower": 0.0,
+    "upper": 475599.7734061625
+  },
+  "Pkt Size Avg": {
+    "lower": 0.0,
+    "upper": 756.0233809292813
+  },
+  "RST Flag Cnt": {
+    "lower": 0.0,
+    "upper": 1.0
+  },
+  "SYN Flag Cnt": {
+    "lower": 0.0,
+    "upper": 1.0
+  },
+  "URG Flag Cnt": {
+    "lower": 0.0,
+    "upper": 1.0
+  },
+  "ack_per_pkt": {
+    "lower": 0.0,
+    "upper": 100000000.0
+  },
+  "active_idle_ratio": {
+    "lower": 1.154644768785556e-16,
+    "upper": 1.0
+  },
+  "bytes_per_pkt": {
+    "lower": 0.0,
+    "upper": 0.0
+  },
+  "fin_per_pkt": {
+    "lower": 0.0,
+    "upper": 0.0
+  },
+  "fwd_bwd_byte_ratio": {
+    "lower": 1.0,
+    "upper": 1.0
+  },
+  "fwd_bwd_pkt_ratio": {
+    "lower": 1.0,
+    "upper": 1.0
+  },
+  "fwd_pkt_cv": {
+    "lower": 0.0,
+    "upper": 3.8945642916334147
+  },
+  "fwd_pkt_size_range": {
+    "lower": 0.0,
+    "upper": 1126.0
+  },
+  "iat_cv": {
+    "lower": 0.0,
+    "upper": 6.057408023085902
+  },
+  "pkts_per_duration": {
+    "lower": 8.423746638681269e-17,
+    "upper": 1.0
+  },
+  "psh_per_pkt": {
+    "lower": 0.0,
+    "upper": 100000000.0
+  },
+  "rst_per_pkt": {
+    "lower": 0.0,
+    "upper": 100000000.0
+  },
+  "syn_per_pkt": {
+    "lower": 0.0,
+    "upper": 100000000.0
+  }
+}

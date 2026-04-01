@@ -1,0 +1,63 @@
+{
+  "rows_initial": 1048575,
+  "rows_final": 1048570,
+  "cols_initial": 80,
+  "cols_final": 56,
+  "zero_var_dropped": [
+    "Bwd PSH Flags",
+    "Fwd URG Flags",
+    "Bwd URG Flags",
+    "CWE Flag Count",
+    "Fwd Byts/b Avg",
+    "Fwd Pkts/b Avg",
+    "Fwd Blk Rate Avg",
+    "Bwd Byts/b Avg",
+    "Bwd Pkts/b Avg",
+    "Bwd Blk Rate Avg"
+  ],
+  "redundant_dropped": [
+    "Subflow Fwd Pkts",
+    "Subflow Bwd Pkts",
+    "Subflow Fwd Byts",
+    "Subflow Bwd Byts",
+    "Fwd Seg Size Avg",
+    "Bwd Seg Size Avg",
+    "Fwd IAT Tot",
+    "Fwd IAT Mean",
+    "Fwd IAT Std",
+    "Fwd IAT Max",
+    "Fwd IAT Min",
+    "ECE Flag Cnt"
+  ],
+  "inf_replaced": 5371,
+  "log_transformed": [
+    "TotLen Bwd Pkts",
+    "Flow IAT Mean",
+    "Flow IAT Std",
+    "Flow IAT Min",
+    "Bwd IAT Std",
+    "Bwd IAT Max",
+    "Fwd PSH Flags",
+    "SYN Flag Cnt",
+    "Active Mean",
+    "Active Std",
+    "Active Max",
+    "Active Min",
+    "Idle Mean",
+    "Idle Std",
+    "Idle Max",
+    "Idle Min"
+  ],
+  "label_distribution": {
+    "Benign": 667621,
+    "FTP-BruteForce": 193360,
+    "SSH-Bruteforce": 187589
+  },
+  "split_sizes": {
+    "train": 733998,
+    "val": 157286,
+    "test": 157286,
+    "train_benign": 467334,
+    "train_attack": 266664
+  }
+}

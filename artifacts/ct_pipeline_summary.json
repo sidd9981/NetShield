@@ -1,0 +1,6 @@
+{
+  "timestamp": "2026-04-01T00:00:17.275036",
+  "drift_share": 0.8472222222222222,
+  "needs_retraining": true,
+  "ab_decision": "ROLLBACK"
+}

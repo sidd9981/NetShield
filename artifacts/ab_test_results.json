@@ -1,0 +1,40 @@
+{
+  "champion": {
+    "n_samples": 5000,
+    "precision": 0.5848184818481849,
+    "recall": 0.8358490566037736,
+    "f1": 0.6881553398058253,
+    "fpr": 0.1596446700507614,
+    "auc_roc": 0.903603462312039,
+    "tp": 886,
+    "fp": 629,
+    "tn": 3311,
+    "fn": 174
+  },
+  "challenger": {
+    "n_samples": 5000,
+    "precision": 0.5606060606060606,
+    "recall": 0.8377358490566038,
+    "f1": 0.6717095310136157,
+    "fpr": 0.1766497461928934,
+    "auc_roc": 0.903603462312039,
+    "tp": 888,
+    "fp": 696,
+    "tn": 3244,
+    "fn": 172
+  },
+  "bayesian_test": {
+    "prob_challenger_better": 0.04199,
+    "decision": "ROLLBACK",
+    "champion_accuracy": 0.8394,
+    "challenger_accuracy": 0.8264,
+    "champion_samples": 5000,
+    "challenger_samples": 5000
+  },
+  "config": {
+    "canary_fraction": 0.1,
+    "min_samples": 1000,
+    "significance_threshold": 0.95,
+    "max_samples": 50000
+  }
+}

@@ -1,0 +1,103 @@
+"""
+NetShield -- Feast Feature Definitions
+"""
+from datetime import timedelta
+from feast import Entity, FeatureView, FileSource, Field
+from feast.types import Float64, Int64, String
+
+# Entity: a network flow identified by flow_id
+flow = Entity(
+    name="flow",
+    join_keys=["flow_id"],
+    description="A network flow record",
+)
+
+# Offline source: Parquet file with preprocessed features
+flow_features_source = FileSource(
+    path="/Users/siddthir/netshield/data/feast/flow_features.parquet",
+    timestamp_field="event_timestamp",
+)
+
+# Feature view: all 72 preprocessed network flow features
+flow_features = FeatureView(
+    name="flow_features",
+    entities=[flow],
+    ttl=timedelta(days=365),
+    schema=[
+    Field(name="ACK_Flag_Cnt", dtype=Float64),
+    Field(name="Active_Max", dtype=Float64),
+    Field(name="Active_Mean", dtype=Float64),
+    Field(name="Active_Min", dtype=Float64),
+    Field(name="Active_Std", dtype=Float64),
+    Field(name="Bwd_Header_Len", dtype=Float64),
+    Field(name="Bwd_IAT_Max", dtype=Float64),
+    Field(name="Bwd_IAT_Mean", dtype=Float64),
+    Field(name="Bwd_IAT_Min", dtype=Float64),
+    Field(name="Bwd_IAT_Std", dtype=Float64),
+    Field(name="Bwd_IAT_Tot", dtype=Float64),
+    Field(name="Bwd_Pkt_Len_Max", dtype=Float64),
+    Field(name="Bwd_Pkt_Len_Mean", dtype=Float64),
+    Field(name="Bwd_Pkt_Len_Min", dtype=Float64),
+    Field(name="Bwd_Pkt_Len_Std", dtype=Float64),
+    Field(name="Bwd_Pkts_per_s", dtype=Float64),
+    Field(name="Down_per_Up_Ratio", dtype=Float64),
+    Field(name="FIN_Flag_Cnt", dtype=Float64),
+    Field(name="Flow_Byts_per_s", dtype=Float64),
+    Field(name="Flow_Duration", dtype=Float64),
+    Field(name="Flow_IAT_Max", dtype=Float64),
+    Field(name="Flow_IAT_Mean", dtype=Float64),
+    Field(name="Flow_IAT_Min", dtype=Float64),
+    Field(name="Flow_IAT_Std", dtype=Float64),
+    Field(name="Flow_Pkts_per_s", dtype=Float64),
+    Field(name="Fwd_Act_Data_Pkts", dtype=Float64),
+    Field(name="Fwd_Header_Len", dtype=Float64),
+    Field(name="Fwd_IAT_Max", dtype=Float64),
+    Field(name="Fwd_IAT_Mean", dtype=Float64),
+    Field(name="Fwd_IAT_Min", dtype=Float64),
+    Field(name="Fwd_IAT_Std", dtype=Float64),
+    Field(name="Fwd_IAT_Tot", dtype=Float64),
+    Field(name="Fwd_PSH_Flags", dtype=Float64),
+    Field(name="Fwd_Pkt_Len_Max", dtype=Float64),
+    Field(name="Fwd_Pkt_Len_Mean", dtype=Float64),
+    Field(name="Fwd_Pkt_Len_Min", dtype=Float64),
+    Field(name="Fwd_Pkt_Len_Std", dtype=Float64),
+    Field(name="Fwd_Pkts_per_s", dtype=Float64),
+    Field(name="Fwd_Seg_Size_Min", dtype=Float64),
+    Field(name="Idle_Max", dtype=Float64),
+    Field(name="Idle_Mean", dtype=Float64),
+    Field(name="Idle_Min", dtype=Float64),
+    Field(name="Idle_Std", dtype=Float64),
+    Field(name="Init_Bwd_Win_Byts", dtype=Float64),
+    Field(name="Init_Fwd_Win_Byts", dtype=Float64),
+    Field(name="PSH_Flag_Cnt", dtype=Float64),
+    Field(name="Pkt_Len_Max", dtype=Float64),
+    Field(name="Pkt_Len_Mean", dtype=Float64),
+    Field(name="Pkt_Len_Min", dtype=Float64),
+    Field(name="Pkt_Len_Std", dtype=Float64),
+    Field(name="Pkt_Len_Var", dtype=Float64),
+    Field(name="Pkt_Size_Avg", dtype=Float64),
+    Field(name="RST_Flag_Cnt", dtype=Float64),
+    Field(name="SYN_Flag_Cnt", dtype=Float64),
+    Field(name="Tot_Bwd_Pkts", dtype=Float64),
+    Field(name="Tot_Fwd_Pkts", dtype=Float64),
+    Field(name="TotLen_Bwd_Pkts", dtype=Float64),
+    Field(name="TotLen_Fwd_Pkts", dtype=Float64),
+    Field(name="URG_Flag_Cnt", dtype=Float64),
+    Field(name="ack_per_pkt", dtype=Float64),
+    Field(name="active_idle_ratio", dtype=Float64),
+    Field(name="bytes_per_pkt", dtype=Float64),
+    Field(name="fin_per_pkt", dtype=Float64),
+    Field(name="fwd_bwd_byte_ratio", dtype=Float64),
+    Field(name="fwd_bwd_pkt_ratio", dtype=Float64),
+    Field(name="fwd_pkt_cv", dtype=Float64),
+    Field(name="fwd_pkt_size_range", dtype=Float64),
+    Field(name="iat_cv", dtype=Float64),
+    Field(name="pkts_per_duration", dtype=Float64),
+    Field(name="psh_per_pkt", dtype=Float64),
+    Field(name="rst_per_pkt", dtype=Float64),
+    Field(name="syn_per_pkt", dtype=Float64),
+    ],
+    source=flow_features_source,
+    online=True,
+    description="Preprocessed network flow features for anomaly detection",
+)

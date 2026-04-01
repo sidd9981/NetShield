@@ -1,0 +1,127 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Data (too large for git)
+data/raw/*.csv
+data/splits/*.npz
+data/processed/*.parquet
+data/feast/
+
+# Model artifacts (large binary files)
+artifacts/best_model.pt
+artifacts/scaler.joblib
+artifacts/production_model.pt
+artifacts/production_threshold.json
+
+# Keep artifact JSONs (small, useful for reference)
+!artifacts/feature_meta.json
+!artifacts/threshold.json
+!artifacts/training_metrics.json
+!artifacts/ab_test_results.json
+!artifacts/preprocessing_stats.json
+
+# Drift reports
+artifacts/drift_reports/
+
+# MLflow
+mlruns/
+mlartifacts/
+
+# Airflow
+airflow.db
+airflow.cfg
+airflow-webserver.pid
+logs/
+
+# Jupyter
+.ipynb_checkpoints/
+notebooks/figures/*.png
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Docker
+*.log
+
+# Prometheus/Grafana data
+prometheus_data/
+grafana_data/
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Data (too large for git)
+data/raw/*.csv
+data/splits/*.npz
+data/processed/*.parquet
+data/feast/
+
+# Model artifacts (large binary files)
+artifacts/best_model.pt
+artifacts/scaler.joblib
+artifacts/production_model.pt
+artifacts/production_threshold.json
+
+# Keep artifact JSONs (small, useful for reference)
+!artifacts/feature_meta.json
+!artifacts/threshold.json
+!artifacts/training_metrics.json
+!artifacts/ab_test_results.json
+!artifacts/preprocessing_stats.json
+
+# Drift reports
+artifacts/drift_reports/
+
+# MLflow
+mlruns/
+mlartifacts/
+
+# Airflow
+airflow.db
+airflow.cfg
+airflow-webserver.pid
+logs/
+
+# Jupyter
+.ipynb_checkpoints/
+notebooks/figures/*.png
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Docker
+*.log
+
+# Prometheus/Grafana data
+prometheus_data/
+grafana_data/.DS_Store

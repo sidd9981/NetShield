@@ -1,0 +1,16 @@
+{
+  "test_auc_roc": 0.9014194047687101,
+  "test_precision": 0.6042410839084815,
+  "test_recall": 0.8259127016137592,
+  "test_f1": 0.6978975143636666,
+  "threshold": 0.0563673794269562,
+  "test_fpr": 0.14993204323344766,
+  "best_val_auc": 0.9012541391475017,
+  "config": {
+    "d_model": 64,
+    "n_heads": 4,
+    "n_layers": 2,
+    "bottleneck": 32,
+    "max_train_samples": 500000
+  }
+}

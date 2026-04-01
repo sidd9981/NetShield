@@ -1,0 +1,205 @@
+{
+    "dashboard": {
+      "title": "NetShield — Intrusion Detection",
+      "tags": ["netshield", "mlops"],
+      "timezone": "browser",
+      "refresh": "5s",
+      "time": {
+        "from": "now-15m",
+        "to": "now"
+      },
+      "panels": [
+        {
+          "title": "Flows Processed (total)",
+          "type": "stat",
+          "gridPos": { "h": 4, "w": 6, "x": 0, "y": 0 },
+          "targets": [
+            {
+              "expr": "netshield_flows_processed_total",
+              "legendFormat": "Total Flows"
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "thresholds": {
+                "steps": [
+                  { "color": "blue", "value": null }
+                ]
+              },
+              "unit": "short"
+            }
+          }
+        },
+        {
+          "title": "Anomalies Detected (total)",
+          "type": "stat",
+          "gridPos": { "h": 4, "w": 6, "x": 6, "y": 0 },
+          "targets": [
+            {
+              "expr": "netshield_anomalies_detected_total",
+              "legendFormat": "Total Anomalies"
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "thresholds": {
+                "steps": [
+                  { "color": "red", "value": null }
+                ]
+              },
+              "unit": "short"
+            }
+          }
+        },
+        {
+          "title": "Anomaly Rate (rolling)",
+          "type": "gauge",
+          "gridPos": { "h": 4, "w": 6, "x": 12, "y": 0 },
+          "targets": [
+            {
+              "expr": "netshield_anomaly_rate",
+              "legendFormat": "Rate"
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "min": 0,
+              "max": 1,
+              "unit": "percentunit",
+              "thresholds": {
+                "steps": [
+                  { "color": "green", "value": null },
+                  { "color": "yellow", "value": 0.2 },
+                  { "color": "red", "value": 0.5 }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "title": "Model Threshold",
+          "type": "stat",
+          "gridPos": { "h": 4, "w": 6, "x": 18, "y": 0 },
+          "targets": [
+            {
+              "expr": "netshield_model_threshold",
+              "legendFormat": "Threshold"
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "thresholds": {
+                "steps": [
+                  { "color": "purple", "value": null }
+                ]
+              },
+              "decimals": 6
+            }
+          }
+        },
+        {
+          "title": "Flows per Second",
+          "type": "timeseries",
+          "gridPos": { "h": 8, "w": 12, "x": 0, "y": 4 },
+          "targets": [
+            {
+              "expr": "rate(netshield_flows_processed_total[30s])",
+              "legendFormat": "Flows/sec"
+            },
+            {
+              "expr": "rate(netshield_anomalies_detected_total[30s])",
+              "legendFormat": "Anomalies/sec"
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "custom": {
+                "drawStyle": "line",
+                "fillOpacity": 20,
+                "lineWidth": 2
+              },
+              "unit": "ops"
+            },
+            "overrides": [
+              {
+                "matcher": { "id": "byName", "options": "Anomalies/sec" },
+                "properties": [
+                  { "id": "color", "value": { "fixedColor": "red", "mode": "fixed" } }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "title": "Inference Latency",
+          "type": "timeseries",
+          "gridPos": { "h": 8, "w": 12, "x": 12, "y": 4 },
+          "targets": [
+            {
+              "expr": "histogram_quantile(0.50, rate(netshield_inference_latency_seconds_bucket[1m]))",
+              "legendFormat": "p50"
+            },
+            {
+              "expr": "histogram_quantile(0.95, rate(netshield_inference_latency_seconds_bucket[1m]))",
+              "legendFormat": "p95"
+            },
+            {
+              "expr": "histogram_quantile(0.99, rate(netshield_inference_latency_seconds_bucket[1m]))",
+              "legendFormat": "p99"
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "custom": {
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "lineWidth": 2
+              },
+              "unit": "s"
+            }
+          }
+        },
+        {
+          "title": "Anomaly Score Distribution",
+          "type": "histogram",
+          "gridPos": { "h": 8, "w": 12, "x": 0, "y": 12 },
+          "targets": [
+            {
+              "expr": "rate(netshield_anomaly_score_bucket[1m])",
+              "legendFormat": "{{le}}",
+              "format": "heatmap"
+            }
+          ],
+          "options": {
+            "bucketOffset": 0,
+            "combine": false,
+            "fillOpacity": 80
+          }
+        },
+        {
+          "title": "Batch Size Distribution",
+          "type": "timeseries",
+          "gridPos": { "h": 8, "w": 12, "x": 12, "y": 12 },
+          "targets": [
+            {
+              "expr": "histogram_quantile(0.50, rate(netshield_batch_size_bucket[1m]))",
+              "legendFormat": "Median batch size"
+            },
+            {
+              "expr": "rate(netshield_flows_processed_total[1m]) / rate(netshield_inference_latency_seconds_count[1m])",
+              "legendFormat": "Avg flows/batch"
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "custom": {
+                "drawStyle": "bars",
+                "fillOpacity": 50
+              },
+              "unit": "short"
+            }
+          }
+        }
+      ]
+    }
+  }

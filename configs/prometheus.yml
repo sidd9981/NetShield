@@ -1,0 +1,11 @@
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+  - job_name: netshield
+    static_configs:
+      - targets:
+          - host.docker.internal:8002
+        labels:
+          service: netshield
+          component: inference
