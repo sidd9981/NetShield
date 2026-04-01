@@ -29,15 +29,16 @@ Test set metrics (stratified split, held out before training). Generalization wa
 Bot and Infiltration are specifically designed to mimic normal traffic patterns — their low recall is a fundamental property of how these attacks behave at the network flow level, not a model failure.
 
 
+## How It Works
 
-How It Works
 Most intrusion detection systems are classifiers — they're trained on labeled examples of known attacks and learn to recognize those specific patterns. The problem is that new attack types emerge constantly. A classifier that has never seen a DDoS variant will simply miss it.
 NetShield takes a different approach: unsupervised anomaly detection. The model is trained exclusively on normal (benign) network traffic. It learns to reconstruct what normal flows look like. At inference time, anything the model struggles to reconstruct — anything that deviates from learned normal patterns — gets flagged as anomalous.
 This means NetShield can detect novel attack types it has never seen during training, which is validated by the 0.94 AUC on the held-out day containing completely unseen attack variants.
 Each network flow is a vector of ~72 features extracted by CICFlowMeter: packet counts, byte rates, inter-arrival times, TCP flag counts, and ratio features engineered to be scale-invariant across days. A Transformer autoencoder processes these features using self-attention, which allows it to learn joint patterns across features — "when Flow Pkts/s is high AND ACK Flag Count is high AND Bwd Pkts/s is low, that combination is suspicious" — something a dense autoencoder treating features independently cannot capture.
 The anomaly score is a blended reconstruction error: 0.7 × mean(per_feature_error) + 0.3 × max(per_feature_error). The mean component catches attacks that are slightly anomalous across many features. The max component catches attacks with extreme anomaly concentrated in a single feature. This blending was critical — see the Model Iterations section below.
 
-Model Iterations
+## Model Iterations
+
 The final model didn't come from a single training run. Each failure was diagnosed systematically.
 Iteration 1 — Transformer autoencoder with StandardScaler
 Problem: Poor cross-day generalization. The model trained well on Wednesday's data but performed poorly on Thursday's unseen attack types.
@@ -58,7 +59,8 @@ Fix: Blended scoring — 0.7 × mean + 0.3 × max. The max component surfaces ex
 Final model — Transformer autoencoder with QuantileTransformer + blended scoring
 Result: AUC 0.901, holdout AUC 0.94.
 
-Data Challenges
+## Data Challenges
+
 The CSE-CIC-IDS2018 dataset is not clean out of the box.
 CICFlowMeter bugs: The tool that extracts network flow features has a known division-by-zero bug. When a flow has zero duration, computing Flow Bytes/s = total_bytes / duration produces infinity. These appeared as inf values across rate columns and had to be replaced with 0. There were also rows with physically impossible negative values — negative packet counts and negative flow durations — which were collection artifacts and dropped entirely.
 Cross-day distribution shift: Each day's traffic has different absolute scales even for normal traffic. A typical Wednesday might have higher overall packet rates than a Thursday due to different workloads. This is the core challenge for training a model that generalizes — the model must learn what "normal" looks like in a relative sense, not an absolute one. QuantileTransformer solves this by being rank-based.
