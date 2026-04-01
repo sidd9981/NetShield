@@ -114,7 +114,7 @@ Full MLOps pipeline — drift detection, retraining, A/B testing, deployment.
 ### BigQuery Analytics
 Detection rate by attack type queried from the live anomaly events table.
 
-![BigQuery query](outputs/bigquery_query.png)
+![BigQuery query](outputs/big_query.png)
 
 ## Key Technical Decisions
 
